@@ -1,4 +1,4 @@
-# Intro to DevOps - Week 2 Project Starter Code
+# Week 2 Project Starter Code
 
 # Goal
 ## Containerize two Flask web services and use Docker Compose to orchestrate them
