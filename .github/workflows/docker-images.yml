@@ -14,7 +14,7 @@ jobs:
     - name: Build the Docker image in respective Directories
       run: |
         cd quote_disp
-        docker build . --file Dockerfile --tag disp:$(date +%s)
+        docker build . --file Dockerfile --tag dis:$(date +%s)
         cd ..
         cd quote_gen
         docker build . --file Dockerfile --tag gen:$(date +%s)
@@ -22,5 +22,5 @@ jobs:
       run:  docker network create quote-network
     - name: Create Docker Container with repective images & network
       run:  | 
-        docker run -d --name gen -p 5000:5000 --network quote-network gen:$(date +%s)
-        docker run -d --name disp -p 5001:5001 --link gen:gen --network quote-network disp:$(date +%s)
+        docker run -d --name gen -p 5000:5000 --network quote-network gen
+        docker run -d --name disp -p 5001:5001 --link gen:gen --network quote-network dis
