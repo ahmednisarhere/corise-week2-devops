@@ -24,3 +24,17 @@ jobs:
       run:  | 
         docker run -d --name gen -p 5000:5000 --network quote-network gen:v1
         docker run -d --name disp -p 5001:5001 --link gen:gen --network quote-network dis:v1
+    
+    - name: Install Dependencies
+      run: | 
+        python -m pip install pytest 
+        python -m pip install pytest-cov
+    - name: Build coverage file
+      run: |
+        python -m pytest --cov . --junitxml=pytest.xml --cov-report=term-missing:skip-covered | tee pytest-coverage.txt
+      
+    - name: Pytest coverage comment
+      uses: MishaKav/pytest-coverage-comment@main
+      with:
+        pytest-coverage-path: ./pytest-coverage.txt
+        junitxml-path: ./pytest.xml 
