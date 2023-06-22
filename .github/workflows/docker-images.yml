@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image in respective Directories
       run: |
+        echo $pwd
         cd quote_disp
         docker build . --file Dockerfile --tag disp:$(date +%s)
         cd ~/quote_gen
