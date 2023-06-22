@@ -16,7 +16,8 @@ jobs:
         echo $pwd
         cd quote_disp
         docker build . --file Dockerfile --tag disp:$(date +%s)
-        cd ~/quote_gen
+        cd ..
+        cd quote_gen
         docker build . --file Dockerfile --tag gen:$(date +%s)
     - name: Create Docker Network
       run:  docker network create quote-network
