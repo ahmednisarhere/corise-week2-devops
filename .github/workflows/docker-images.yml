@@ -1,5 +1,7 @@
 name: Docker Quotes Images
 
+permissions: write-all
+
 on:
   push:
     branches: ["master"]
